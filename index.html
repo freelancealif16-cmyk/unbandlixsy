@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#050203">
+<title>UNBANDLIXSY</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap">
+<style>
+:root{--bg:#050203;--red:#ff1e3c;--ink:#f3e9ea;--mute:#a58f93;--ok:#22e07a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0}
+body{background:radial-gradient(ellipse at 50% 0%,#2e060b 0%,var(--bg) 62%);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;overflow-x:hidden}
+.fog{position:fixed;inset:-20%;pointer-events:none;filter:blur(60px);opacity:.38}
+.f1{background:radial-gradient(circle at 20% 72%,#7a0a1a,transparent 45%);animation:drift 22s ease-in-out infinite alternate}
+.f2{background:radial-gradient(circle at 82% 28%,#4a0610,transparent 45%);animation:drift 28s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translate3d(8%,-6%,0) scale(1.15)}}
+.bolt{position:fixed;top:0;right:8%;width:min(46vw,260px);height:70vh;pointer-events:none;opacity:0;animation:flash 9s infinite;filter:drop-shadow(0 0 10px #ff3550) drop-shadow(0 0 28px #ff1e3c)}
+.bolt polyline{fill:none;stroke:#ffd9de;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.flash{position:fixed;inset:0;pointer-events:none;opacity:0;background:radial-gradient(ellipse at 80% 0%,rgba(255,70,90,.5),transparent 60%);animation:flash 9s infinite}
+@keyframes flash{0%,89%,95%,100%{opacity:0}90%{opacity:1}91%{opacity:.15}92%{opacity:.85}93%{opacity:.1}}
+header{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px}
+.logo{font-family:Orbitron,Impact,"Arial Black",sans-serif;font-weight:900;font-size:1.25rem;letter-spacing:.12em;background:linear-gradient(90deg,#ff6a7d,#c1051f);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 9px rgba(255,30,60,.75))}
+.pill{padding:10px 15px;border-radius:999px;border:1px solid var(--red);background:rgba(255,30,60,.12);color:var(--ink);text-decoration:none;font-size:.78rem;font-weight:700;letter-spacing:.05em;transition:.25s;white-space:nowrap}
+.pill:hover,.pill:focus-visible{background:var(--red);box-shadow:0 0 18px rgba(255,30,60,.75);outline:none}
+main{position:relative;z-index:2;min-height:calc(100vh - 76px);display:grid;place-items:center;padding:16px}
+.card{width:100%;max-width:420px;padding:28px 22px;border-radius:18px;background:rgba(20,6,9,.55);border:1px solid rgba(255,30,60,.28);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 0 44px rgba(255,30,60,.16);animation:rise .6s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+h1{font-family:Orbitron,Impact,sans-serif;font-size:1.25rem;letter-spacing:.1em;text-align:center;margin-bottom:20px;text-shadow:0 0 14px rgba(255,30,60,.55)}
+label.t{display:block;font-size:.85rem;color:var(--mute)}
+input[type=tel]{width:100%;margin-top:6px;padding:14px;border-radius:10px;border:1px solid #3a1519;background:rgba(0,0,0,.45);color:var(--ink);font-size:1rem;transition:.25s}
+input[type=tel]:focus{outline:none;border-color:var(--red);box-shadow:0 0 14px rgba(255,30,60,.45)}
+.opts{display:grid;gap:10px;margin:16px 0}
+.opt{display:block;position:relative;padding:14px;border-radius:12px;border:1px solid #3a1519;background:rgba(0,0,0,.35);font-weight:600;cursor:pointer;transition:.25s}
+.opt input{position:absolute;opacity:0}
+.opt::before{content:"○ ";color:var(--mute)}
+.opt.on{border-color:var(--red);box-shadow:0 0 16px rgba(255,30,60,.55);transform:scale(1.02)}
+.opt.on::before{content:"● ";color:var(--red)}
+.opt:focus-within{outline:2px solid var(--red)}
+.err{min-height:1.2em;margin-bottom:8px;text-align:center;font-size:.85rem;color:#ff6b7d}
+.btn{position:relative;width:100%;padding:14px;border:0;border-radius:10px;font-weight:800;font-size:1rem;letter-spacing:.08em;color:#fff;background:linear-gradient(180deg,#ff2a47,#a30a1f);box-shadow:0 0 18px rgba(255,30,60,.5);cursor:pointer;transition:.25s}
+.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 0 28px rgba(255,30,60,.85)}
+.btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+.btn.load{color:transparent}
+.btn.load::after{content:"";position:absolute;inset:0;margin:auto;width:20px;height:20px;border:3px solid #fff4;border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.done{text-align:center}
+.done svg{width:112px;height:112px;filter:drop-shadow(0 0 16px var(--ok))}
+.done circle{fill:none;stroke:var(--ok);stroke-width:5;stroke-dasharray:290;stroke-dashoffset:290;animation:draw .6s ease forwards}
+.done path{fill:none;stroke:var(--ok);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:70;stroke-dashoffset:70;animation:draw .4s .5s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.done h2{margin:14px 0 6px;font-family:Orbitron,Impact,sans-serif;font-size:1.1rem;letter-spacing:.08em;color:var(--ok);text-shadow:0 0 14px rgba(34,224,122,.65)}
+.done p{margin-top:8px;font-size:.9rem;color:var(--mute)}
+.done .id{display:inline-block;margin-top:14px;padding:8px 14px;border-radius:8px;border:1px dashed var(--ok);color:var(--ink);font-weight:700;letter-spacing:.1em}
+.link{margin-top:16px;background:none;border:0;color:var(--red);cursor:pointer;font-size:.9rem;padding:8px}
+@media (prefers-reduced-motion:reduce){*,.bolt,.fog,.flash{animation:none!important;transition:none!important}.done circle,.done path{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+<div class="fog f1"></div><div class="fog f2"></div><div class="flash"></div>
+<svg class="bolt" viewBox="0 0 100 300" aria-hidden="true"><polyline points="62,0 40,90 66,100 30,200 50,208 22,300"/></svg>
+
+<header>
+  <div class="logo">UNBANDLIXSY</div>
+  <a class="pill" href="https://whatsapp.com/channel/0029VbDhE8H6rsQtyufM4S1Y" target="_blank" rel="noopener noreferrer">SALURAN WA</a>
+</header>
+
+<main>
+  <div class="card" id="card">
+    <form id="f" novalidate>
+      <h1>PENGAJUAN UNBAND</h1>
+      <label class="t">NOMOR TELEPON
+        <input type="tel" id="phone" inputmode="tel" maxlength="20" placeholder="Contoh: 08xxx" autocomplete="tel">
+      </label>
+      <div class="opts" role="radiogroup" aria-label="Jenis pengajuan">
+        <label class="opt"><input type="radio" name="jenis" value="BAND PERMANENT">BAND PERMANENT</label>
+        <label class="opt"><input type="radio" name="jenis" value="BAND BIASA">BAND BIASA</label>
+        <label class="opt"><input type="radio" name="jenis" value="LOGIN TIDAK TERSEDIA">LOGIN TIDAK TERSEDIA</label>
+        <label class="opt"><input type="radio" name="jenis" value="LIMIT">LIMIT</label>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <button class="btn" id="go" disabled>KONFIRMASI</button>
+    </form>
+  </div>
+</main>
+
+<script>
+(function(){
+  var f=document.getElementById('f'),ph=document.getElementById('phone'),go=document.getElementById('go'),err=document.getElementById('err'),card=document.getElementById('card');
+  function chosen(){var r=f.querySelector('input[name=jenis]:checked');return r?r.value:''}
+  function sync(){
+    f.querySelectorAll('.opt').forEach(function(o){o.classList.toggle('on',o.querySelector('input').checked)});
+    go.disabled=!(ph.value.trim()&&chosen());
+  }
+  function makeId(){
+    var c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',b=new Uint8Array(4),s='';
+    (window.crypto||{getRandomValues:function(a){for(var i=0;i<a.length;i++)a[i]=Math.random()*256}}).getRandomValues(b);
+    for(var i=0;i<4;i++)s+=c[b[i]%c.length];
+    return 'UNB-'+s;
+  }
+  function done(id){
+    card.innerHTML='<div class="done"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><path d="M28 52l16 16 29-34"/></svg>'
+      +'<h2>TELAH TERKONFIRMASI</h2><p>Harap tunggu 1x24 jam</p><span class="id" id="rid"></span>'
+      +'<p>Pengajuan tercatat di perangkat ini dan belum dikirim ke server mana pun. Ini bukan jaminan akun pasti dipulihkan.</p>'
+      +'<button class="link" id="again">Buat pengajuan lagi</button></div>';
+    document.getElementById('rid').textContent=id;
+    document.getElementById('again').onclick=function(){location.reload()};
+  }
+  f.addEventListener('input',sync);
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var phone=ph.value.replace(/[\s-]/g,'');
+    if(!/^(\+?62|0)8\d{7,12}$/.test(phone)){err.textContent='Nomor telepon tidak valid. Contoh: 08xxx';return}
+    err.textContent='';go.disabled=true;go.classList.add('load');
+    var type=chosen();
+    setTimeout(function(){
+      var id=makeId();
+      try{
+        var k='unb_submissions',a=JSON.parse(localStorage.getItem(k)||'[]');
+        a.push({id:id,phone:phone,type:type,status:'MENUNGGU',at:new Date().toISOString()});
+        localStorage.setItem(k,JSON.stringify(a));
+      }catch(_){}
+      done(id);
+    },1400);
+  });
+})();
+</script>
+</body>
+</html>
